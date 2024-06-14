@@ -10,12 +10,12 @@ namespace cs0614
         public Form1()
         {
             InitializeComponent();
-            vx[0] = random.Next(-10, 10);
-            vy[0] = random.Next(-10, 10);
-            vx[1] = random.Next(-10, 10);
-            vy[1] = random.Next(-10, 10);
-            vx[2] = random.Next(-10, 10);
-            vy[2] = random.Next(-10, 10);
+
+            for (int i = 0; i < 3; i++)
+            {
+                vx[i] = random.Next(-10, 11);
+                vy[i] = random.Next(-10, 11);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
