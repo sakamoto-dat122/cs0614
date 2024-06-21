@@ -2,17 +2,19 @@ namespace cs0614
 {
     public partial class Form1 : Form
     {
-        static Random random = new Random();
-        int[] vx = new int[100];
-        int[] vy = new int[100];
+        static int ChrMax => 100;
 
-        Label[] labels = new Label[100];//100個分の新しい領域を確保
+        static Random random = new Random();
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
+
+        Label[] labels = new Label[ChrMax];//100個分の新しい領域を確保
 
 
         public Form1()
         {
             InitializeComponent();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < ChrMax; i++)
             {
                 labels[i] = new Label();//1個のラベルを管理する領域
                 labels[i].AutoSize = true;
@@ -20,14 +22,14 @@ namespace cs0614
                 Controls.Add(labels[i]);
                 labels[i].Font = new Font(
                     "Yu Gothic UI",
-                    24F,
+                    5F,
                     FontStyle.Regular,
                     GraphicsUnit.Point);
-                labels[i].Location = new Point(random.Next(ClientSize.Width - labels[i].Width), random.Next(ClientSize.Height - labels[i].Height));
-            }
 
-            for (int i = 0; i < 100; i++)
-            {
+                labels[i].Location = new Point(random.Next(ClientSize.Width - labels[i].Width), random.Next(ClientSize.Height - labels[i].Height));
+                //labels[i].Left = random.Next(ClientSize.Width - labels[i].Width);
+                //labels[i].Top = random.Next(ClientSize.Height - labels[i].Height);
+
                 vx[i] = random.Next(-10, 11);
                 vy[i] = random.Next(-10, 11);
             }
@@ -44,7 +46,7 @@ namespace cs0614
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < ChrMax; i++)
             {
                 labels[i].Left += vx[i];
                 labels[i].Top += vy[i];
